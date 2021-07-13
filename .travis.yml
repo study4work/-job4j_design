@@ -13,7 +13,7 @@
 
       - env:
           global:
-            - CODECOV_TOKEN="b87acc8f-9166-46a5-9edd-819d9b497ffe"
+            - CODECOV_TOKEN='b87acc8f-9166-46a5-9edd-819d9b497ffe'
     # Отправлять уведомление на почту FaJlJleN@ya.ru  если сборка упала
     notifications:
       email:
