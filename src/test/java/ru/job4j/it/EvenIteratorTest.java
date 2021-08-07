@@ -39,7 +39,7 @@ public class EvenIteratorTest {
 
     @Test
     public void  shouldReturnFalseIfNoAnyEvenNumbers() {
-        it = new EvenIterator(new int[]{1});
+        it = new EvenIterator(new int[] {1});
         assertThat(it.hasNext(), is(false));
     }
 
