@@ -24,7 +24,7 @@ public class EvenIterator implements Iterator<Integer> {
     @Override
     public boolean hasNext() {
         tempCount = evenNumber();
-        return evenNumber() != -1;
+        return tempCount != -1;
     }
 
 
