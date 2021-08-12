@@ -22,8 +22,7 @@ public class EvenIterator implements Iterator<Integer> {
 
     @Override
     public boolean hasNext() {
-        evenNumber();
-        return numbers[point] % 2 == 0;
+        return  evenNumber() != -1;
     }
 
 
