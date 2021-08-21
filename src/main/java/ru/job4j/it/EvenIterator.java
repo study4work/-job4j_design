@@ -14,7 +14,8 @@ public class EvenIterator implements Iterator<Integer> {
     public int evenNumber() {
         for (int i = point; i < numbers.length; i++) {
             if (numbers[i] % 2 == 0) {
-                return point = i;
+                point = i;
+                return point;
             }
         }
         return -1;
