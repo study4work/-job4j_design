@@ -30,11 +30,14 @@ public class FlatMap<T> implements Iterator<T> {
     }
 
     public static void main(String[] args) {
-        Iterator<Iterator<Object>> data = List.of(
-                List.of().iterator(),
-                List.of().iterator()
+        Iterator<Iterator<Integer>> data = List.of(
+                List.of(1, 2, 3).iterator(),
+                List.of(4, 5, 6).iterator(),
+                List.of(7, 8, 9).iterator()
         ).iterator();
-        FlatMap flat = new FlatMap(data);
-            System.out.println(flat.hasNext());
+        FlatMap<Integer> flat = new FlatMap<>(data);
+        while (flat.hasNext()) {
+            System.out.println(flat.next());
+        }
     }
 }
