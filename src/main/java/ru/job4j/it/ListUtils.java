@@ -22,7 +22,7 @@ public class ListUtils {
         Objects.checkIndex(index, list.size());
         ListIterator<T> i = list.listIterator();
         while (i.hasNext()) {
-            if (i.previousIndex() + 1 == index) {
+            if (i.nextIndex() == index) {
                 i.next();
                 i.add(value);
                 break;
@@ -51,19 +51,10 @@ public class ListUtils {
 
     public static <T> void removeAll(List<T> list, List<T> elements) {
         ListIterator<T> iList = list.listIterator();
-        ListIterator<T> iElement = elements.listIterator();
         while (iList.hasNext()) {
-            T valueList = iList.next();
-            while (iElement.hasNext()) {
-                T elementNext = iElement.next();
-                if (elementNext == valueList) {
-                    iList.remove();
-                    break;
-                }
+            if (elements.contains(iList.next())) {
+                iList.remove();
             }
-            while (iElement.hasPrevious()) {
-                iElement.previous();
-                }
             }
         }
     }
