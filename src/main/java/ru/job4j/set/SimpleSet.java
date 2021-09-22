@@ -21,7 +21,9 @@ public class SimpleSet<T> implements Set<T> {
     @Override
     public boolean contains(T value) {
         for (T t: set) {
-           return deepEquals(t, value);
+            if (deepEquals(t, value)) {
+                return true;
+            }
            }
         return false;
     }
