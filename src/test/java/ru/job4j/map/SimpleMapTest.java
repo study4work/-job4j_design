@@ -65,6 +65,15 @@ public class SimpleMapTest  {
     }
 
     @Test
+    public void iteratorHasntNext() {
+        map.put("2", 2);
+        Iterator<Object> iterator = map.iterator();
+        Assert.assertTrue(iterator.hasNext());
+        Assert.assertEquals(iterator.next(), "2");
+        Assert.assertFalse(iterator.hasNext());
+    }
+
+    @Test
     public void iteratorNext() {
         map.put("2", 33);
         Iterator<Object> iterator = map.iterator();

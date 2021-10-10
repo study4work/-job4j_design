@@ -1,6 +1,5 @@
 package ru.job4j.map;
 
-import java.util.Arrays;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -84,7 +83,7 @@ public class SimpleMap<K, V> implements Map<K, V> {
                 if (expectedModCount != modCount) {
                     throw new ConcurrentModificationException();
                 }
-                return counter < capacity;
+                return counter < count;
             }
 
             @Override
@@ -114,11 +113,4 @@ public class SimpleMap<K, V> implements Map<K, V> {
         }
 
     }
-
-    public static void main(String[] args) {
-        SimpleMap map = new SimpleMap();
-        map.put("key", "value");
-        System.out.println(map.iterator().hasNext());
-    }
-
 }
