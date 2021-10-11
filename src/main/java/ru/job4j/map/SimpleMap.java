@@ -76,14 +76,14 @@ public class SimpleMap<K, V> implements Map<K, V> {
     public Iterator<K> iterator() {
         return new Iterator<K>() {
             final int expectedModCount = modCount;
-            int counter = 0;
+            int iteratorCounter = 0;
 
             @Override
             public boolean hasNext() {
                 if (expectedModCount != modCount) {
                     throw new ConcurrentModificationException();
                 }
-                return counter < count;
+                return iteratorCounter < count;
             }
 
             @Override
@@ -94,10 +94,10 @@ public class SimpleMap<K, V> implements Map<K, V> {
                 if (expectedModCount != modCount) {
                     throw new ConcurrentModificationException();
                 }
-                while (table[counter] == null) {
-                    counter++;
+                while (table[iteratorCounter] == null) {
+                    iteratorCounter++;
                 }
-                return table[counter].key;
+                return table[iteratorCounter].key;
             }
         };
     }
