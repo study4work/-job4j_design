@@ -22,17 +22,18 @@ public class SimpleMap<K, V> implements Map<K, V> {
 
     @Override
     public boolean put(K key, V value) {
-        int i = key == null ? 0 : indexFor(hash(key.hashCode()));
         if (count >= capacity * LOAD_FACTOR) {
             expand();
         }
+        boolean rsl = false;
+        int i = key == null ? 0 : indexFor(hash(key.hashCode()));
         if (table[i] == null) {
             table[i] = new MapEntry<>(key, value);
             count++;
             modCount++;
-            return true;
+            rsl = true;
         }
-        return false;
+        return rsl;
     }
 
     private int hash(int hashCode) {
@@ -45,7 +46,8 @@ public class SimpleMap<K, V> implements Map<K, V> {
 
     private void expand() {
         MapEntry<K, V>[] buffer = table;
-         table = new MapEntry[capacity * 2];
+        capacity = capacity * 2;
+         table = new MapEntry[capacity];
          count = 0;
       for (MapEntry<K, V> map : buffer) {
           if (map != null) {
