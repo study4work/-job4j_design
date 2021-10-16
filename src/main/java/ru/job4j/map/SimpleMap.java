@@ -26,7 +26,7 @@ public class SimpleMap<K, V> implements Map<K, V> {
             expand();
         }
         boolean rsl = false;
-        int i = key == null ? 0 : indexFor(hash(key.hashCode()));
+        int i = key == null ? 0 : indexResult(key);
         if (table[i] == null) {
             table[i] = new MapEntry<>(key, value);
             count++;
