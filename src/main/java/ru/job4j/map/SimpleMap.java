@@ -69,13 +69,14 @@ public class SimpleMap<K, V> implements Map<K, V> {
 
     @Override
     public boolean remove(K key) {
+        boolean rsl = false;
         if (table[indexResult(key)].key.equals(key)) {
             table[indexResult(key)] = null;
             modCount++;
             count--;
-            return true;
+            rsl = true;
         }
-        return false;
+        return rsl;
     }
 
     @Override
