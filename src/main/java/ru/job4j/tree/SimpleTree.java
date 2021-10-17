@@ -14,11 +14,13 @@ public class SimpleTree<E> implements Tree<E> {
         boolean rsl = false;
             Optional<Node<E>> parentResult = findBy(parent);
             Optional<Node<E>> dublicateChild = findBy(child);
-            if (parentResult.isPresent() && !dublicateChild.isPresent()) {
+            if (parentResult.isPresent()) {
+                if (!dublicateChild.isPresent()) {
                     Node<E> newChild = new Node<>(child);
                     parentResult.get().children.add(newChild);
                     rsl = true;
                 }
+            }
         return rsl;
     }
 
