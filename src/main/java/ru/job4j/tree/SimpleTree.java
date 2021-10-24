@@ -26,7 +26,7 @@ public class SimpleTree<E> implements Tree<E> {
 
     @Override
     public Optional<Node<E>> findBy(E value) {
-        return findByPredicate(value::equals);
+        return findByPredicate(v -> v.value.equals(value));
     }
 
     private Optional<Node<E>> findByPredicate(Predicate<Node<E>> condition) {
@@ -45,10 +45,10 @@ public class SimpleTree<E> implements Tree<E> {
     }
 
     public boolean isBinary() {
-        boolean rsl = true;
-        Optional<Node<E>> re = findByPredicate(v -> v.children.size() > 2);
-        if (re.isPresent()) {
-            rsl = false;
+        boolean rsl = false;
+        Optional<Node<E>> notBinaryElementFind = findByPredicate(v -> v.children.size() > 2);
+        if (notBinaryElementFind.isEmpty()) {
+            rsl = true;
         }
         return rsl;
     }
