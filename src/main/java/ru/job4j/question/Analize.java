@@ -18,17 +18,14 @@ public class Analize {
                         User::getName));
 
             for (User user : current) {
-                // User add
                 if (!rsl.containsKey(user.getId())) {
                     a++;
                     continue;
                 }
-                // User change
                 if (!rsl.get(user.getId()).equals(user.getName())) {
                     c++;
                     continue;
                 }
-                // User unmodify
                 u++;
             }
             log.setAdded(a);
